@@ -4,13 +4,13 @@
  * @return {Promise}
  */
 export const preloadHandlebarsTemplates = async function () {
-  return loadTemplates([
-    // Actor partials.
-    'systems/lore/templates/actor/parts/actor-features.hbs',
-    'systems/lore/templates/actor/parts/actor-items.hbs',
-    'systems/lore/templates/actor/parts/actor-spells.hbs',
-    'systems/lore/templates/actor/parts/actor-effects.hbs',
-    // Item partials
-    'systems/lore/templates/item/parts/item-effects.hbs',
-  ]);
+    return foundry.applications.handlebars.loadTemplates([
+        // Actor partials.
+        'systems/lore/templates/actor/parts/actor-features.hbs',
+        'systems/lore/templates/actor/parts/actor-items.hbs',
+        'systems/lore/templates/actor/parts/actor-spells.hbs',
+        'systems/lore/templates/actor/parts/actor-effects.hbs',
+        // Item partials
+        'systems/lore/templates/item/parts/item-effects.hbs',
+    ]);
 };

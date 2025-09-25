@@ -5,9 +5,9 @@ import {
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
- * @extends {ActorSheet}
+ * @extends {foundry.appv1.sheets.ActorSheet}
  */
-export class LOREActorSheet extends ActorSheet {
+export class LOREActorSheet extends foundry.appv1.sheets.ActorSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -62,7 +62,7 @@ export class LOREActorSheet extends ActorSheet {
 
     // Enrich biography info for display
     // Enrichment turns text like `[[/r 1d20]]` into buttons
-    context.enrichedBiography = await TextEditor.enrichHTML(
+    context.enrichedBiography = await foundry.applications.ux.TextEditor.implementation.enrichHTML(
       this.actor.system.biography,
       {
         // Whether to show secret blocks in the finished html

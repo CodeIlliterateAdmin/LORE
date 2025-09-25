@@ -58,16 +58,16 @@ Hooks.once('init', function () {
   CONFIG.ActiveEffect.legacyTransferral = false;
 
   // Register sheet application classes
-  Actors.unregisterSheet('core', ActorSheet);
-  Actors.registerSheet('lore', LOREActorSheet, {
-    makeDefault: true,
-    label: 'LORE.SheetLabels.Actor',
-  });
-  Items.unregisterSheet('core', ItemSheet);
-  Items.registerSheet('lore', LOREItemSheet, {
-    makeDefault: true,
-    label: 'LORE.SheetLabels.Item',
-  });
+    foundry.documents.collections.Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
+    foundry.documents.collections.Actors.registerSheet('lore', LOREActorSheet, {
+        makeDefault: true,
+        label: 'LORE.SheetLabels.Actor',
+    });
+    foundry.documents.collections.Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
+    foundry.documents.collections.Items.registerSheet('lore', LOREItemSheet, {
+        makeDefault: true,
+        label: 'LORE.SheetLabels.Item',
+    });
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();
