@@ -15,7 +15,14 @@
     },
     "SheetLabels": {
       "Actor": "LORE Actor Sheet",
-      "Item": "LORE Item Sheet"
+      "Item": "LORE Item Sheet",
+      "SheetTabs": {
+        "Skills": "Skills",
+        "Items": "Items",
+        "Spells": "Spells",
+        "Effects": "Effects",
+        "Description": "Description"
+      }
     },
     "Item": {
       "Spell": {
@@ -39,7 +46,7 @@
     },
     "Item": {
       "item": "Item",
-      "feature": "Feature",
+      "skill": "Skill",
       "spell": "Spell"
     }
   }

@@ -16,7 +16,7 @@ export default class LORECharacter extends LOREActorBase {
     // Iterate over attribute names and create a new SchemaField for each.
     schema.attributes = new fields.SchemaField(Object.keys(CONFIG.LORE.attributes).reduce((obj, attribute) => {
       obj[attribute] = new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        value: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
       });
       return obj;
     }, {}));
@@ -28,7 +28,7 @@ export default class LORECharacter extends LOREActorBase {
     // Loop through attribute scores, and add their modifiers to our sheet output.
     for (const key in this.attributes) {
       // Calculate the modifier using d20 rules.
-      this.attributes[key].mod = Math.floor((this.attributes[key].value - 10) / 2);
+      this.attributes[key].mod = this.attributes[key].value;
       // Handle attribute label localization.
       this.attributes[key].label = game.i18n.localize(CONFIG.LORE.attributes[key]) ?? key;
     }

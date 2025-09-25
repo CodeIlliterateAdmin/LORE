@@ -44,19 +44,19 @@
 
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
-    {{!-- Default tab is specified in actor-sheet.mjs --}}
-    <a class="item" data-tab="features">Features</a>
-    <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="items">Items</a>
-    <a class="item" data-tab="spells">Spells</a>
-    <a class="item" data-tab="effects">Effects</a>
+      {{!-- Default tab is specified in actor-sheet.mjs --}}
+      <a class="item" data-tab="skills">{{localize 'LORE.SheetLabels.SheetTabs.Skills'}}</a>
+      <a class="item" data-tab="items">{{localize 'LORE.SheetLabels.SheetTabs.Items'}}</a>
+      <a class="item" data-tab="spells">{{localize 'LORE.SheetLabels.SheetTabs.Spells'}}</a>
+      <a class="item" data-tab="effects">{{localize 'LORE.SheetLabels.SheetTabs.Effects'}}</a>
+      <a class="item" data-tab="description">{{localize 'LORE.SheetLabels.SheetTabs.Description'}}</a>
   </nav>
 
   {{!-- Sheet Body --}}
   <section class="sheet-body">
 
-    {{!-- Owned Features Tab --}}
-    <div class="tab features" data-group="primary" data-tab="features">
+    {{!-- Owned Skills Tab --}}
+    <div class="tab skills" data-group="primary" data-tab="skills">
       <section class="grid grid-3col">
         <aside class="sidebar">
 
@@ -74,10 +74,10 @@
           </div>
         </aside>
 
-        {{!-- For the main features list, span the right two columns --}}
+        {{!-- For the main skills list, span the right two columns --}}
         <section class="main grid-span-2">
           {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-          {{> "systems/lore/templates/actor/parts/actor-features.hbs"}}
+          {{> "systems/lore/templates/actor/parts/actor-skills.hbs"}}
         </section>
 
       </section>

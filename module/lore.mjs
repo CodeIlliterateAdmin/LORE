@@ -48,7 +48,7 @@ Hooks.once('init', function () {
   CONFIG.Item.documentClass = LOREItem;
   CONFIG.Item.dataModels = {
     item: models.LOREItem,
-    feature: models.LOREFeature,
+    skill: models.LORESkill,
     spell: models.LORESpell
   }
 
