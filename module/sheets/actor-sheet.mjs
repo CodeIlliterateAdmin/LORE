@@ -105,18 +105,7 @@ export class LOREActorSheet extends foundry.appv1.sheets.ActorSheet {
     // Initialize containers.
     const gear = [];
     const skills = [];
-    const spells = {
-      0: [],
-      1: [],
-      2: [],
-      3: [],
-      4: [],
-      5: [],
-      6: [],
-      7: [],
-      8: [],
-      9: [],
-    };
+    const powers = [];
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -129,18 +118,16 @@ export class LOREActorSheet extends foundry.appv1.sheets.ActorSheet {
       else if (i.type === 'skill') {
         skills.push(i);
       }
-      // Append to spells.
-      else if (i.type === 'spell') {
-        if (i.system.spellLevel != undefined) {
-          spells[i.system.spellLevel].push(i);
-        }
+      // Append to powers.
+      else if (i.type === 'power') {
+        powers.push(i);
       }
     }
 
     // Assign and return
     context.gear = gear;
     context.skills = skills;
-    context.spells = spells;
+    context.powers = powers;
   }
 
   /* -------------------------------------------- */

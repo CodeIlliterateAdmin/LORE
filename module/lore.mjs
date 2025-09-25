@@ -49,7 +49,7 @@ Hooks.once('init', function () {
   CONFIG.Item.dataModels = {
     item: models.LOREItem,
     skill: models.LORESkill,
-    spell: models.LORESpell
+    power: models.LOREPower
   }
 
   // Active Effects are never copied to the Actor,

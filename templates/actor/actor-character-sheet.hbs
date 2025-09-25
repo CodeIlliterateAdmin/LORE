@@ -8,7 +8,7 @@
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
       use both the "grid" and "grid-Ncol" class where "N" can be any number
       from 1 to 12 and will create that number of columns.  --}}
-      <div class="resources grid grid-3col">
+      <div class="resources grid grid-4col">
 
         {{!-- "flex-group-center" is also defined in the _grid.scss file
         and it will add a small amount of padding, a border, and will
@@ -38,6 +38,15 @@
           </div>
         </div>
 
+          <div class="resource flex-group-center">
+              <label for="system.lorecoins.value" class="resource-label">{{localize 'LORE.resource.LORECoins'}}</label>
+              <div class="resource-content flexrow flex-center flex-between">
+                  <input type="text" name="system.lorecoins.value" value="{{system.lorecoins.value}}" data-dtype="Number"/>
+                  <span> / </span>
+                  <input type="text" name="system.lorecoins.max" value="{{system.lorecoins.max}}" data-dtype="Number"/>
+              </div>
+          </div>
+
       </div>
     </div>
   </header>
@@ -46,8 +55,8 @@
   <nav class="sheet-tabs tabs" data-group="primary">
       {{!-- Default tab is specified in actor-sheet.mjs --}}
       <a class="item" data-tab="skills">{{localize 'LORE.SheetLabels.SheetTabs.Skills'}}</a>
-      <a class="item" data-tab="items">{{localize 'LORE.SheetLabels.SheetTabs.Items'}}</a>
-      <a class="item" data-tab="spells">{{localize 'LORE.SheetLabels.SheetTabs.Spells'}}</a>
+      <a class="item" data-tab="equipment">{{localize 'LORE.SheetLabels.SheetTabs.Equipment'}}</a>
+      <a class="item" data-tab="powers">{{localize 'LORE.SheetLabels.SheetTabs.Powers'}}</a>
       <a class="item" data-tab="effects">{{localize 'LORE.SheetLabels.SheetTabs.Effects'}}</a>
       <a class="item" data-tab="description">{{localize 'LORE.SheetLabels.SheetTabs.Description'}}</a>
   </nav>
@@ -89,14 +98,14 @@
       {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
     </div>
 
-    {{!-- Owned Items Tab --}}
-    <div class="tab items" data-group="primary" data-tab="items">
+    {{!-- Owned Equipment Tab --}}
+    <div class="tab equipment" data-group="primary" data-tab="equipment">
        {{> "systems/lore/templates/actor/parts/actor-items.hbs"}}
     </div>
 
-    {{!-- Owned Spells Tab --}}
-    <div class="tab spells" data-group="primary" data-tab="spells">
-      {{> "systems/lore/templates/actor/parts/actor-spells.hbs"}}
+    {{!-- Owned Powers Tab --}}
+    <div class="tab powers" data-group="primary" data-tab="powers">
+      {{> "systems/lore/templates/actor/parts/actor-powers.hbs"}}
     </div>
 
     {{!-- Active Effects Tab --}}

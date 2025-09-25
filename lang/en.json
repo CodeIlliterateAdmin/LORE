@@ -11,22 +11,23 @@
     "resource": {
       "Wounds": "Wounds",
       "Juice": "Juice",
-      "Rank": "Rank"
+      "Rank": "Rank",
+      "LORECoins": "LORE Coins"
     },
     "SheetLabels": {
       "Actor": "LORE Actor Sheet",
       "Item": "LORE Item Sheet",
       "SheetTabs": {
         "Skills": "Skills",
-        "Items": "Items",
-        "Spells": "Spells",
+        "Equipment": "Equipment",
+        "Powers": "Powers",
         "Effects": "Effects",
         "Description": "Description"
       }
     },
     "Item": {
-      "Spell": {
-        "SpellLVL": "Level {level} Spells",
+      "Power": {
+        "PowerLVL": "Level {level} Spells",
         "AddLVL": "Add LVL {level}"
       }
     },
@@ -47,7 +48,7 @@
     "Item": {
       "item": "Item",
       "skill": "Skill",
-      "spell": "Spell"
+      "power": "Power"
     }
   }
 }
