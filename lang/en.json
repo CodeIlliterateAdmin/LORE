@@ -1,12 +1,17 @@
 {
   "LORE": {
-    "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
+    "attribute": {
+      "Mig": { "long": "Might", "abbr": "mig" },
+      "Ref": { "long": "Reflexes", "abbr": "ref" },
+      "Phy": { "long": "Physique", "abbr": "phy" },
+      "Int": { "long": "Intellect", "abbr": "int" },
+      "Gri": { "long": "Grit", "abbr": "gri" },
       "Cha": { "long": "Charisma", "abbr": "cha" }
+    },
+    "resource": {
+      "Wounds": "Wounds",
+      "Juice": "Juice",
+      "Rank": "Rank"
     },
     "SheetLabels": {
       "Actor": "LORE Actor Sheet",

@@ -1,23 +1,23 @@
 export const LORE = {};
 
 /**
- * The set of Ability Scores used within the system.
+ * The set of Attribute Scores used within the system.
  * @type {Object}
  */
-LORE.abilities = {
-  str: 'LORE.Ability.Str.long',
-  dex: 'LORE.Ability.Dex.long',
-  con: 'LORE.Ability.Con.long',
-  int: 'LORE.Ability.Int.long',
-  wis: 'LORE.Ability.Wis.long',
-  cha: 'LORE.Ability.Cha.long',
+LORE.attributes = {
+  mig: 'LORE.attribute.Mig.long',
+  ref: 'LORE.attribute.Ref.long',
+  phy: 'LORE.attribute.Phy.long',
+  int: 'LORE.attribute.Int.long',
+  gri: 'LORE.attribute.Gri.long',
+  cha: 'LORE.attribute.Cha.long',
 };
 
-LORE.abilityAbbreviations = {
-  str: 'LORE.Ability.Str.abbr',
-  dex: 'LORE.Ability.Dex.abbr',
-  con: 'LORE.Ability.Con.abbr',
-  int: 'LORE.Ability.Int.abbr',
-  wis: 'LORE.Ability.Wis.abbr',
-  cha: 'LORE.Ability.Cha.abbr',
+LORE.attributeAbbreviations = {
+  mig: 'LORE.attribute.Mig.abbr',
+  ref: 'LORE.attribute.Ref.abbr',
+  phy: 'LORE.attribute.Phy.abbr',
+  int: 'LORE.attribute.Int.abbr',
+  gri: 'LORE.attribute.Gri.abbr',
+  cha: 'LORE.attribute.Cha.abbr',
 };

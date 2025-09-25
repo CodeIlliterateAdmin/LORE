@@ -7,15 +7,15 @@ export default class LORECharacter extends LOREActorBase {
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = super.defineSchema();
 
-    schema.attributes = new fields.SchemaField({
-      level: new fields.SchemaField({
+    schema.resources = new fields.SchemaField({
+      rank: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 1 })
       }),
     });
 
-    // Iterate over ability names and create a new SchemaField for each.
-    schema.abilities = new fields.SchemaField(Object.keys(CONFIG.LORE.abilities).reduce((obj, ability) => {
-      obj[ability] = new fields.SchemaField({
+    // Iterate over attribute names and create a new SchemaField for each.
+    schema.attributes = new fields.SchemaField(Object.keys(CONFIG.LORE.attributes).reduce((obj, attribute) => {
+      obj[attribute] = new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
       });
       return obj;
@@ -25,27 +25,27 @@ export default class LORECharacter extends LOREActorBase {
   }
 
   prepareDerivedData() {
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (const key in this.abilities) {
+    // Loop through attribute scores, and add their modifiers to our sheet output.
+    for (const key in this.attributes) {
       // Calculate the modifier using d20 rules.
-      this.abilities[key].mod = Math.floor((this.abilities[key].value - 10) / 2);
-      // Handle ability label localization.
-      this.abilities[key].label = game.i18n.localize(CONFIG.LORE.abilities[key]) ?? key;
+      this.attributes[key].mod = Math.floor((this.attributes[key].value - 10) / 2);
+      // Handle attribute label localization.
+      this.attributes[key].label = game.i18n.localize(CONFIG.LORE.attributes[key]) ?? key;
     }
   }
 
   getRollData() {
     const data = {};
 
-    // Copy the ability scores to the top level, so that rolls can use
-    // formulas like `@str.mod + 4`.
-    if (this.abilities) {
-      for (let [k,v] of Object.entries(this.abilities)) {
+    // Copy the attribute scores to the top level, so that rolls can use
+    // formulas like `@mig.mod + 4`.
+    if (this.attributes) {
+      for (let [k,v] of Object.entries(this.attributes)) {
         data[k] = foundry.utils.deepClone(v);
       }
     }
 
-    data.lvl = this.attributes.level.value;
+    data.lvl = this.resources.rank.value;
 
     return data
   }
