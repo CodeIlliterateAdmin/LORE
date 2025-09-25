@@ -4,15 +4,15 @@
   "description": "The LORE tabletop RPG system for FoundryVTT.",
   "authors": [
     {
-      "name": "Asacolips",
-      "discord": "asacolips"
+      "name": "Birael",
+      "discord": "birael"
     },
     {
-      "name": "Lee Talman",
-      "discord": ".pizzaWizard"
+      "name": "Will Tomorrow",
+      "discord": "willtomorrow"
     }
   ],
-  "url": "Replace this with a link to your public repository",
+  "url": "https://github.com/CodeIlliterateAdmin/lore",
   "license": "LICENSE.txt",
   "readme": "README.md",
   "bugs": "Replace this with a link to file issues or tickets",
@@ -24,10 +24,10 @@
       "thumbnail": "systems/lore/assets/anvil-impact.png"
     }
   ],
-  "version": "2.0.0",
+  "version": "0.0.1",
   "compatibility": {
-    "minimum": 11,
-    "verified": "11.315"
+    "minimum": 13,
+    "verified": "13.347"
   },
   "esmodules": ["module/lore.mjs"],
   "styles": ["css/lore.css"],
