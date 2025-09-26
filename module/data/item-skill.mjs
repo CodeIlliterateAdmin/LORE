@@ -8,7 +8,7 @@ export default class LORESkill extends LOREItemBase {
 
         // Skill rank
         schema.rank = new fields.SchemaField({
-            value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 }),
+            value: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
             max: new fields.NumberField({ ...requiredInteger, initial: 5 })
         });
 
@@ -32,12 +32,11 @@ export default class LORESkill extends LOREItemBase {
     }
 
     prepareDerivedData() {
-        const diceNum = this.roll?.diceNum ?? 1;
+        const raw = Number(this.rank?.value || 1);
+        const diceNum = Math.max(1, raw);
         const diceSize = this.roll?.diceSize ?? "d6";
         const attrKey = this.attribute || "mig";
-
-        // Build "1d20+@<attr>.mod+@rank.value"
-        const bonus = `+@${attrKey}.mod+@rank.value`;
-        this.formula = `${diceNum}${diceSize}${bonus}`;
+        const bonus = `+@${attrKey}.bonus`;
+        this.formula = `${diceNum}${diceSize}khx${bonus}`;
     }
 }

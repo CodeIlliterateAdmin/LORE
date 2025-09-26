@@ -17,6 +17,7 @@
     "SheetLabels": {
       "Actor": "LORE Actor Sheet",
       "Item": "LORE Item Sheet",
+      "Attribute": "Attribute",
       "SheetTabs": {
         "Skills": "Skills",
         "Rank": "Rank",

@@ -1,3 +1,5 @@
+import { isCritFail } from "../helpers/templates.mjs";
+
 /**
  * Extend the basic Item with some very simple modifications.
  * @extends {Item}
@@ -80,11 +82,12 @@ export class LOREItem extends Item {
       // Invoke the roll and submit it to chat.
       const roll = new Roll(rollData.formula, rollData.actor);
       // If you need to store the value first, uncomment the next line.
-      // const result = await roll.evaluate();
+      await roll.evaluate({async: true});
+      const critFail = isCritFail(roll)
       roll.toMessage({
         speaker: speaker,
         rollMode: rollMode,
-        flavor: label,
+          flavor: critFail ? `${label} - CRITICAL FAILURE` : label,
       });
       return roll;
     }

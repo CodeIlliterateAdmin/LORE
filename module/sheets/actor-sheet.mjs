@@ -2,6 +2,7 @@ import {
   onManageActiveEffect,
   prepareActiveEffectCategories,
 } from '../helpers/effects.mjs';
+import { isCritFail } from "../helpers/templates.mjs";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -230,13 +231,17 @@ export class LOREActorSheet extends foundry.appv1.sheets.ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+        const attrLabel = game.i18n.localize("LORE.SheetLabels.Attribute");
+      let label = dataset.label ? `[${attrLabel}] ${dataset.label}` : '';
       let roll = new Roll(dataset.roll, this.actor.getRollData());
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
-      });
+      roll.evaluate({async: true}).then(r => {
+          const critFail = isCritFail(r);
+          r.toMessage({
+              speaker: ChatMessage.getSpeaker({actor: this.actor}),
+              flavor: critFail ? `${label} - CRITICAL FAILURE` : label,
+              rollMode: game.settings.get('core', 'rollMode'),
+          });
+      })
       return roll;
     }
   }
