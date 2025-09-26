@@ -19,6 +19,7 @@
       "Item": "LORE Item Sheet",
       "SheetTabs": {
         "Skills": "Skills",
+        "Rank": "Rank",
         "Equipment": "Equipment",
         "Powers": "Powers",
         "Effects": "Effects",

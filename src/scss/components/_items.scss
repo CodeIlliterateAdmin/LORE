@@ -67,6 +67,19 @@
     }
   }
 
+  // Item Details
+  .item-details {
+    display: flex;
+    flex: 0 0 100px;
+    justify-content: flex-end;
+    margin-right: 6px;
+    a {
+      font-size: 12px;
+      text-align: center;
+      margin: 0 10px;
+    }
+  }
+
   // Individual Item
   .item {
     align-items: center;

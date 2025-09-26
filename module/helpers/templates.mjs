@@ -3,6 +3,10 @@
  * Pre-loaded templates are compiled and cached for fast access when rendering
  * @return {Promise}
  */
+
+// Register helpers at load time
+Handlebars.registerHelper("multiply", (a, b) => Number(a) * Number(b));
+
 export const preloadHandlebarsTemplates = async function () {
     return foundry.applications.handlebars.loadTemplates([
         // Actor partials.
@@ -12,5 +16,6 @@ export const preloadHandlebarsTemplates = async function () {
         'systems/lore/templates/actor/parts/actor-effects.hbs',
         // Item partials
         'systems/lore/templates/item/parts/item-effects.hbs',
+        'systems/lore/templates/item/parts/item-skills.hbs',
     ]);
 };

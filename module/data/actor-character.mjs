@@ -27,8 +27,11 @@ export default class LORECharacter extends LOREActorBase {
   prepareDerivedData() {
     // Loop through attribute scores, and add their modifiers to our sheet output.
     for (const key in this.attributes) {
-      // Calculate the modifier using d20 rules.
-      this.attributes[key].mod = this.attributes[key].value;
+      // Calculate the modifier
+        const val = this.attributes[key].value * 1;
+
+      this.attributes[key].mod = val;
+      this.attributes[key].bonus = Math.max(val - 1, 0);
       // Handle attribute label localization.
       this.attributes[key].label = game.i18n.localize(CONFIG.LORE.attributes[key]) ?? key;
     }
@@ -45,7 +48,7 @@ export default class LORECharacter extends LOREActorBase {
       }
     }
 
-    data.lvl = this.resources.rank.value;
+    data.rank = this.resources.rank.value;
 
     return data
   }

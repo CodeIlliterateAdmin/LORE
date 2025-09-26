@@ -1,0 +1,20 @@
+﻿<div class="form-group">
+    <label>{{localize 'LORE.SheetLabels.SheetTabs.Rank'}}</label>
+    <div class="form-fields">
+        <input type="number" name="system.rank.value" value="{{system.rank.value}}" data-dtype="Number" min="0"/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label>Attribute</label>
+    <div class="form-fields">
+        <select name="system.attribute">
+            <option value="mig" {{#if (eq system.attribute "mig")}}selected{{/if}}>Might</option>
+            <option value="ref" {{#if (eq system.attribute "ref")}}selected{{/if}}>Reflexes</option>
+            <option value="phy" {{#if (eq system.attribute "phy")}}selected{{/if}}>Physique</option>
+            <option value="int" {{#if (eq system.attribute "int")}}selected{{/if}}>Intellect</option>
+            <option value="gri" {{#if (eq system.attribute "gri")}}selected{{/if}}>Grit</option>
+            <option value="cha" {{#if (eq system.attribute "cha")}}selected{{/if}}>Charisma</option>
+        </select>
+    </div>
+</div>

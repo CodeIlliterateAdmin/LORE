@@ -1,16 +1,7 @@
 <ol class='items-list'>
   <li class='item flexrow items-header'>
-    <div class='item-name'>{{localize 'Name'}}</div>
-    <div class='item-controls'>
-      <a
-        class='item-control item-create'
-        title='Create item'
-        data-type='skill'
-      >
-        <i class='fas fa-plus'></i>
-        {{localize 'DOCUMENT.New' type='skill'}}
-      </a>
-    </div>
+    <div class='item-name'>{{localize 'LORE.SheetLabels.SheetTabs.Skills'}}</div>
+    <div class='item-rank'>{{localize 'LORE.SheetLabels.SheetTabs.Rank'}}</div>
   </li>
   {{#each skills as |item id|}}
     <li class='item flexrow' data-item-id='{{item._id}}'>

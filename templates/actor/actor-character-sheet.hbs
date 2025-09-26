@@ -57,7 +57,6 @@
       <a class="item" data-tab="skills">{{localize 'LORE.SheetLabels.SheetTabs.Skills'}}</a>
       <a class="item" data-tab="equipment">{{localize 'LORE.SheetLabels.SheetTabs.Equipment'}}</a>
       <a class="item" data-tab="powers">{{localize 'LORE.SheetLabels.SheetTabs.Powers'}}</a>
-      <a class="item" data-tab="effects">{{localize 'LORE.SheetLabels.SheetTabs.Effects'}}</a>
       <a class="item" data-tab="description">{{localize 'LORE.SheetLabels.SheetTabs.Description'}}</a>
   </nav>
 
@@ -75,9 +74,17 @@
           <div class="attributes flexcol">
             {{#each system.attributes as |attribute key|}}
             <div class="attribute flexrow flex-group-center">
-              <label for="system.attributes.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@attributes.{{key}}.mod" data-label="{{localize (lookup @root.config.attributes key)}}">{{localize (lookup @root.config.attributes key)}}</label>
+              <label for="system.attributes.{{key}}.value"
+                     class="resource-label rollable flexlarge align-left"
+                     data-roll="{{multiply attribute.value 1}}d6khx{{#if attribute.bonus}} + {{attribute.bonus}}{{/if}}"
+                     data-label="{{localize (lookup @root.config.attributes key)}}">
+                  {{localize (lookup @root.config.attributes key)}}
+              </label>
               <input type="text" name="system.attributes.{{key}}.value" value="{{attribute.value}}" data-dtype="Number"/>
-              <span class="attribute-mod rollable" data-roll="d20+@attributes.{{key}}.mod" data-label="{{localize (lookup @root.config.attributes key)}}">{{numberFormat attribute.mod decimals=0 sign=true}}</span>
+              <span class="attribute-mod"
+                    data-label="{{localize (lookup @root.config.attributes key)}}">
+                  {{numberFormat attribute.bonus decimals=0 sign=true}}
+              </span>
             </div>
             {{/each}}
           </div>
