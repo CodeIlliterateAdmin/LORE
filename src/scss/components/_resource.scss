@@ -1,3 +1,25 @@
 .resource-label {
   font-weight: bold;
 }
+
+.wounds-pips {
+  gap: 1rem;
+  align-items: center;
+}
+
+.wound-pip {
+  width: 32px;              /* make even larger, e.g., 40–56px */
+  height: 32px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #bbb;         /* empty */
+  border: 2px solid #888;
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4);
+  //cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.wound-pip.filled {
+  background: #d33;         /* filled */
+  border-color: #b11;
+}

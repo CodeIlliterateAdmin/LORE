@@ -21,3 +21,13 @@ LORE.attributeAbbreviations = {
   gri: 'LORE.attribute.Gri.abbr',
   cha: 'LORE.attribute.Cha.abbr',
 };
+
+// Fixed attribute types (physical or mental) determined at creation time.
+LORE.attributeTypes = {
+    mig: 'physical',
+    ref: 'physical',
+    phy: 'physical',
+    int: 'mental',
+    gri: 'mental',
+    cha: 'mental'
+};

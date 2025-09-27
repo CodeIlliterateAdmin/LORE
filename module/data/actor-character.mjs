@@ -17,6 +17,11 @@ export default class LORECharacter extends LOREActorBase {
     schema.attributes = new fields.SchemaField(Object.keys(CONFIG.LORE.attributes).reduce((obj, attribute) => {
       obj[attribute] = new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 }),
+          type: new fields.StringField({
+              required: true,
+              initial: "physical",
+              choices: ["physical", "mental"]
+          })
       });
       return obj;
     }, {}));
@@ -34,6 +39,11 @@ export default class LORECharacter extends LOREActorBase {
       this.attributes[key].bonus = Math.max(val - 1, 0);
       // Handle attribute label localization.
       this.attributes[key].label = game.i18n.localize(CONFIG.LORE.attributes[key]) ?? key;
+
+      const fixedType = CONFIG.LORE.attributeTypes?.[key];
+      if(fixedType && this.attributes[key].type != fixedType) {
+          this.attributes[key].type = fixedType;
+      }
     }
   }
 
@@ -46,6 +56,12 @@ export default class LORECharacter extends LOREActorBase {
       for (let [k,v] of Object.entries(this.attributes)) {
         data[k] = foundry.utils.deepClone(v);
       }
+
+      // Optional helpers for targeting types in roll formulas or scripts.
+        data._attributesByType = {
+            physical: Object.fromEntries(Object.entries(this.attributes).filter(([_, a]) => a.type === "physical")),
+            mental: Object.fromEntries(Object.entries(this.attributes).filter(([_, a]) => a.type === "mental"))
+        };
     }
 
     data.rank = this.resources.rank.value;

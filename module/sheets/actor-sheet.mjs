@@ -148,6 +148,17 @@ export class LOREActorSheet extends foundry.appv1.sheets.ActorSheet {
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
 
+      // Wounds pip toggles
+      html.on('click', '.wounds-pips .wound-pip', async (ev) => {
+          const pip = ev.currentTarget;
+          const container = pip.closest('.wounds-pips');
+          const prop = container.dataset.prop; // "system.wounds.value"
+          const idx = Number(pip.dataset.index); // 1..3
+          const current = foundry.utils.getProperty(this.actor, prop) ?? 0;
+          const next = current === idx ? 0 : idx;
+          await this.actor.update({ [prop]: next });
+      });
+
     // Add Inventory Item
     html.on('click', '.item-create', this._onItemCreate.bind(this));
 

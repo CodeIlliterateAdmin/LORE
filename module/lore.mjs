@@ -3,6 +3,7 @@ import { LOREActor } from './documents/actor.mjs';
 import { LOREItem } from './documents/item.mjs';
 // Import sheet classes.
 import { LOREActorSheet } from './sheets/actor-sheet.mjs';
+import {LOREActorSheetAlt} from './sheets/actor-sheet-alt.mjs';
 import { LOREItemSheet } from './sheets/item-sheet.mjs';
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from './helpers/templates.mjs';
@@ -23,6 +24,19 @@ Hooks.once('init', function () {
     rollItemMacro,
   };
 
+    // Handlebars helpers
+    Handlebars.registerHelper('range', function (start, end, options) {
+        const s = Number(start) || 0;
+        const e = Number(end) || 0;
+        const out = [];
+        for (let i = s; i <= e; i++) out.push(i);
+        return out;
+    });
+
+    Handlebars.registerHelper('gte', function (a, b) {
+        return Number(a) >= Number(b);
+    });
+
   // Add custom constants for configuration.
   CONFIG.LORE = LORE;
 
@@ -34,6 +48,8 @@ Hooks.once('init', function () {
     formula: '1d20 + @abilities.dex.mod',
     decimals: 2,
   };
+
+
 
   // Define custom Document and DataModel classes
   CONFIG.Actor.documentClass = LOREActor;
@@ -59,14 +75,17 @@ Hooks.once('init', function () {
 
   // Register sheet application classes
     foundry.documents.collections.Actors.unregisterSheet('core', foundry.appv1.sheets.ActorSheet);
-    foundry.documents.collections.Actors.registerSheet('lore', LOREActorSheet, {
+    // Existing/main sheet
+    Actors.registerSheet("lore", LOREActorSheet, {
+        types: ["character", "npc"],
         makeDefault: true,
-        label: 'LORE.SheetLabels.Actor',
+        label: "LORE Actor Sheet",
     });
     foundry.documents.collections.Items.unregisterSheet('core', foundry.appv1.sheets.ItemSheet);
-    foundry.documents.collections.Items.registerSheet('lore', LOREItemSheet, {
-        makeDefault: true,
-        label: 'LORE.SheetLabels.Item',
+    Actors.registerSheet("lore", LOREActorSheetAlt, {
+        types: ["character", "npc"],
+        makeDefault: false,
+        label: "LORE Actor Sheet (Alt)",
     });
 
   // Preload Handlebars templates.

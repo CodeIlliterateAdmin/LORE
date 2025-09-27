@@ -63,7 +63,12 @@ export class LOREItem extends Item {
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({ actor: this.actor });
     const rollMode = game.settings.get('core', 'rollMode');
-    const label = `[${item.type}] ${item.name}`;
+
+    const attrKey = this.system.attribute;
+    const attrName = game.i18n.localize(CONFIG.LORE.attributes[attrKey]);
+    const attrType = this.actor?.getRollData()?.[attrKey]?.type;
+
+    const label = `[${item.type}] ${item.name}${attrType ? ` — ${attrName} (${attrType})` : ""}`;
 
     // If there's no roll data, send a chat message.
     if (!this.system.formula) {

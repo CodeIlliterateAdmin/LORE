@@ -2,12 +2,12 @@
 
   {{!-- Sheet Header --}}
   <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-    <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-      use both the "grid" and "grid-Ncol" class where "N" can be any number
-      from 1 to 12 and will create that number of columns.  --}}
+      {{!-- <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+      <div class="header-fields"> --}}
+        <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+        {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+        use both the "grid" and "grid-Ncol" class where "N" can be any number
+        from 1 to 12 and will create that number of columns.  --}}
       <div class="resources grid grid-4col">
 
         {{!-- "flex-group-center" is also defined in the _grid.scss file
@@ -15,19 +15,10 @@
         center all of its child elements content and text. --}}
         <div class="resource flex-group-center">
           <label for="system.wounds.value" class="resource-label">{{localize 'LORE.resource.Wounds'}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.wounds.value" value="{{system.wound.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="system.wounds.max" value="{{system.wounds.max}}" data-dtype="Number"/>
-          </div>
-        </div>
-
-        <div class="resource flex-group-center">
-          <label for="system.juice.value" class="resource-label">{{localize 'LORE.resource.Juice'}}</label>
-          <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.juice.value" value="{{system.juice.value}}" data-dtype="Number"/>
-          <span> / </span>
-          <input type="text" name="system.juice.max" value="{{system.juice.max}}" data-dtype="Number"/>
+          <div class="resource-content flexrow flex-center flex-between wounds-pips" data-prop="system.wounds.value">
+              {{#each (range 1 system.wounds.max) as |i|}}
+                  <span class="wound-pip {{#if (gte ../system.wounds.value i)}}filled{{/if}}" data-index="{{i}}">●</span>
+              {{/each}}
           </div>
         </div>
 
@@ -47,6 +38,14 @@
               </div>
           </div>
 
+          <div class="resource flex-group-center">
+              <label for="system.fatigue.value" class="resource-label">{{localize 'LORE.resource.Fatigue'}}</label>
+              <div class="resource-content flexrow flex-center flex-between wounds-pips" data-prop="system.fatigue.value">
+                  {{#each (range 1 system.wounds.max) as |i|}}
+                      <span class="wound-pip {{#if (gte ../system.fatigue.value i)}}filled{{/if}}" data-index="{{i}}">●</span>
+                  {{/each}}
+              </div>
+          </div>
       </div>
     </div>
   </header>

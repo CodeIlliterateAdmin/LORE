@@ -10,6 +10,7 @@
     },
     "resource": {
       "Wounds": "Wounds",
+      "Fatigue": "Fatigue",
       "Juice": "Juice",
       "Rank": "Rank",
       "LORECoins": "LORE Coins"
